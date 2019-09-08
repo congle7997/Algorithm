@@ -1,89 +1,101 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <cstdio>
-using namespace std;
-
-struct Point {
-	int row;
-	int col;
-};
-queue<Point> q;
-bool visited[1000][1000];
-int r[4] = { -1, 0, 1, 0 };
-int c[4] = { 0, 1, 0, -1};
-float count1 = 0;
-float count2 = 0;
-
-void resetCheckAndCount(int m, int n) {
-	count1 = 0;
-	count2 = 0;
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			visited[i][j] = false;
-		}
-	}
-}
-
-void BFS(char a[1000][1000], int i, int j) {
-	if (a[i][j] == '*') {
-		count1++;
-	}
-	visited[i][j] = true;
-	Point p;
-	p.row = i;
-	p.col = j;
-	q.push(p);
-	count2++;
-
-	while (!q.empty()) {
-		Point p = q.front();
-		a[p.row][p.col] = 'x';
-		q.pop();
-		for (int k = 0; k < 4; k++) {
-			int x = p.row + r[k];
-			int y = p.col + c[k];
-			if ((a[x][y] == '*' || a[x][y] == '-') && visited[x][y] == false) { // x >= 0 && x < m && y >= 0 && y < n &&
-				visited[x][y] = true;
-				Point p;
-				p.row = x;
-				p.col = y;
-				q.push(p);
-				if (a[x][y] == '*') {
-					count1++;
-				}
-			}
-		}
-	}
-}
-
-void getAverage(char a[1000][1000], int m, int n) {
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			if (a[i][j] == '*' || a[i][j] == '-') {
-				BFS(a, i, j);
-			}
-		}
-	}
-	// co the in truc tiep ket qua luon nhung phai co dau cach vi no chi lay ket qua tu lenh in ra
-	printf("%.2f ", count1 / count2);
-	resetCheckAndCount(m, n);
-}
-
-int main() {
-	int u;
-	cin >> u;
-	for (int k = 0; k < u; k++) {
-		char a[1000][1000];
-		int m;
-		int n;
-		cin >> m;
-		cin >> n;
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				cin >> a[i][j];
-			}
-		}
-		getAverage(a, m, n);
-	}
-}
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+22
+30
+41
+50
+61
+70
+81
+90
+111
+200
+311
+400
+511
+600
+711
+800
+911
+2000
+3111
+4000
+5111
+6000
+7111
+8000
+9111
+20000
+31111
+40000
+51111
+60000
+71111
+80000
+91111
+200000
+311111
+400000
+511111
+600000
+711111
+800000
+911111
+2000000
+3111111
+4000000
+5111111
+6000000
+7111111
+8000000
+9111111
+20000000
+31111111
+40000000
+51111111
+60000000
+71111111
+80000000
+91111111
+200000000
+311111111
+400000000
+511111111
+600000000
+711111111
+800000000
+911111111
+2000000000
+3111111111
+4000000000
+5111111111
+6000000000
+7111111111
+8000000000
+9111111111
+20000000000
+31111111111
+40000000000
+51111111111
+60000000000
+71111111111
+80000000000
+91111111111
+200000000000
+311111111111
+400000000000
+511111111111
+600000000000
+711111111111
+800000000000
+911111111111
+2000000000000
