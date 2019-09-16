@@ -24,7 +24,7 @@ int main() {
 	for (int i = 1; i <= n; i++) {
 		int m;
 		cin >> m;
-		for (int j = 1; j <= m; j++) {
+		for (int j = 0; j < m; j++) {
 			int x;
 			cin >> x;
 			v[i].push_back(x);
