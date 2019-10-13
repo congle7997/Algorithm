@@ -4,8 +4,8 @@ using namespace std;
 int a[20];
 int n;
 
-void printResult(int a[], int n) {
-	for (int i = 0; i < n; i++) {
+void printResult() {
+	for (int i = 1; i <= n; i++) {
 		cout << a[i];
 	}
 	cout << endl;
@@ -14,10 +14,9 @@ void printResult(int a[], int n) {
 void createBinaryString(int k) {
 	for (int i = 0; i <= 1; i++) {
 		a[k] = i;
-		if (k == n - 1) {
-			printResult(a, n);
-		}
-		else {
+		if (k == n) {
+			printResult();
+		} else {
 			createBinaryString(k + 1);
 		}
 	}
@@ -25,5 +24,5 @@ void createBinaryString(int k) {
 
 int main() {
 	cin >> n;
-	createBinaryString(0);
+	createBinaryString(1);
 }

@@ -12,7 +12,7 @@ int calculateFactorial(int n) {
 	return n * calculateFactorial(n - 1);
 }
 
-void show() {
+void printResult() {
 	for (int i = 1; i <= n; i++) {
 		cout << a[i];
 	}
@@ -25,9 +25,8 @@ void createPermutationString(int k) {
 			a[k] = i;
 			check[i] = true;
 			if (k == n) {
-				show();
-			}
-			else {
+				printResult();
+			} else {
 				createPermutationString(k + 1);
 			}
 			check[i] = false;
