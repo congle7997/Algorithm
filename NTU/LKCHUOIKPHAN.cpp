@@ -5,20 +5,20 @@ using namespace std;
 int x, n;
 int a[10];
 
-void printResult() {
+void showResult() {
 	for (int i = 1; i <= n; i++) {
 		cout << a[i];
 	}
 	cout << endl;
 }
 
-void createKString(int k) {
+void genKString(int k) {
 	for (int i = 1; i <= x; i++) {
 		a[k] = i;
 		if (k == n) {
-			printResult();
+			showResult();
 		} else {
-			createKString(k + 1);
+			genKString(k + 1);
 		}
 	}
 }
@@ -26,5 +26,5 @@ void createKString(int k) {
 int main() {
 	cin >> x >> n;
 	cout << pow(x, n) << endl;
-	createKString(1);
+	genKString(1);
 }

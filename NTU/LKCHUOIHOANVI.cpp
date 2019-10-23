@@ -12,22 +12,22 @@ int calculateFactorial(int n) {
 	return n * calculateFactorial(n - 1);
 }
 
-void printResult() {
+void showResult() {
 	for (int i = 1; i <= n; i++) {
 		cout << a[i];
 	}
 	cout << endl;
 }
 
-void createPermutationString(int k) {
+void genPermutationString(int k) {
 	for (int i = 1; i <= n; i++) {
 		if (!check[i]) {
 			a[k] = i;
 			check[i] = true;
 			if (k == n) {
-				printResult();
+				showResult();
 			} else {
-				createPermutationString(k + 1);
+				genPermutationString(k + 1);
 			}
 			check[i] = false;
 		}
@@ -37,5 +37,5 @@ void createPermutationString(int k) {
 int main() {
 	cin >> n;
 	cout << calculateFactorial(n) << endl;
-	createPermutationString(1);
+	genPermutationString(1);
 }
