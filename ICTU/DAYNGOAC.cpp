@@ -1,27 +1,44 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int fib(int n)
-{
-	/* Declare an array to store Fibonacci numbers. */
-	int f[n];   // 1 extra to handle case, n = 0
+int n;
+char a[21];
+int balance = 0;
 
-	/* 0th and 1st number of the series are 0 and 1*/
-	f[1] = 1;
-	f[2] = 1;
-
-	for (int i = 3; i <= n; i++)
-	{
-		f[i] = f[i - 1] + f[i - 2];
+void showResult() {
+	for (int i = 1; i <= n * 2; i++) {
+		cout << a[i];
 	}
+	cout << endl;
+}
 
+void Try(int k) {
+	for (int i = 0; i < 2; i++) {
+		int support = balance;
+		
+		if (i == 0) {
+			a[k] = '(';
+			balance++;
+		} else {
+			a[k] = ')';
+			balance--;
+		}
 
-	return f[n];
+		if (balance >= 0 && balance <= n) {
+			if (k == n * 2) {
+				if (balance == 0){
+					showResult();
+				}
+			} else {
+				Try(k + 1);
+			}
+		}
+
+		balance = support;
+	}
 }
 
 int main() {
-	int n;
 	cin >> n;
-
-	cout << fib(n);
+	Try(1);
 }
