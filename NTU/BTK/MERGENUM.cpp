@@ -21,7 +21,7 @@ void Try(int xPos, int yPos, string temp) {
 }
 
 int main() {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 
 	cin >> x >> y;
 

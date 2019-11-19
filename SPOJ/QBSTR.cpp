@@ -1,6 +1,7 @@
 // QBSTR - Xâu con chung dài nhất
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 string str1, str2;
@@ -17,11 +18,7 @@ void genTable() {
 			if (str1[i - 1] == str2[j - 1]) {
 				table[i][j] = table[i - 1][j - 1] + 1;
 			} else {
-				if (table[i - 1][j] > table[i][j - 1]) {
-					table[i][j] = table[i - 1][j];
-				} else {
-					table[i][j] = table[i][j - 1];
-				}
+				table[i][j] = max(table[i - 1][j], table[i][j - 1]);
 			}
 		}
 	}
@@ -41,7 +38,7 @@ int main() {
 	cin >> str1 >> str2;
 
 	genTable();
-	//showTable();
+	showTable();
 
 	cout << table[str1.length()][str2.length()];
 }
