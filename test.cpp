@@ -1,39 +1,47 @@
 #include <iostream>
 #include <algorithm>
+#include <cstring>
 using namespace std;
 
-string x, y, temp;
-int xLen, yLen, resultLen;
-string maxNumber = "11", minNumber = "9999999999999999";
-
-void Try(int xPos, int yPos, string temp) {
-	if (xPos <= xLen) {
-		Try(xPos + 1, yPos, temp + x[xPos]);
-	}
-	if (yPos <= yLen) {
-		Try(xPos, yPos + 1, temp + y[yPos]);
-	}
-
-	if (temp.length() == resultLen) {
-		minNumber = min(minNumber, temp);
-        maxNumber = max(maxNumber, temp);
-	}
-}
-
-int main() {
+int main()
+{
 	freopen("input.txt", "r", stdin);
+	int n;
+	cin >> n;
 
-	cin >> x >> y;
+	int a[109];
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a[i];
+	}
 
-	xLen = x.size();
-	yLen = y.size();
-	resultLen = xLen + yLen;
+	sort(a, a + n, greater<int>());
 
-	// " 13" & " 26"
-	x.insert(0, 1, ' ');
-	y.insert(0, 1, ' ');
+	if (a[0] == 0)
+	{
+		cout << 1;
+	}
+	else
+	{
+		int res = n, x = n;
+		for (int i = 0; i < n - 1; i++)
+		{
+			if (a[i] >= x)
+			{
+				x--;
+				continue;
+			}
+			else if (a[i] == 0)
+			{
+				break;
+			}
+			else
+			{
+				res -= x - (a[i] + 1);
+				x = a[i];
+			}
+		}
 
-	Try(1, 1, "");
-
-    cout << minNumber << "\n" << maxNumber;  
+		cout << res;
+	}
 }
