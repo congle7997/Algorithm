@@ -4,10 +4,7 @@
         {
             "label": "compile and run",
             "type": "shell",
-            "command": "cls; g++ ${file} -o ${fileBasenameNoExtension}; ./${fileBasenameNoExtension} ",
-            "options": {
-                "cwd": "C:\\MinGW\\bin"
-            },
+            "command": "cls; g++ ${file} -o test.exe; ./test.exe",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
@@ -16,6 +13,6 @@
                 "kind": "build",
                 "isDefault": true
             }
-        }      
+        }
     ]
 }
