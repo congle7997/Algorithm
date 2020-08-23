@@ -1,40 +1,27 @@
-#include <iostream>
+#include<iostream>
+
 using namespace std;
 
-const int MAX = 1000;
-int q[MAX];
-int front = 0, rear = -1;
-
-bool isEmpty() {
-	return front > rear;
+int x[11];
+void printArray(int a[], int n){
+    for (int i = 1; i <= n; i++){
+        cout << a[i];
+    }
+    cout <<" ";
 }
-
-bool isFull() {
-	return rear == MAX;
+void dequy(int h, int k, int n){
+    for (int i = x[h-1] + 1; i <= n - (k-h); i++){
+        x[h] = i;
+        if (h == k) printArray(x, k);
+        else {
+            dequy(h+1, k, n);
+        }
+    }
 }
-
-void push(int x) {
-	q[++rear] = x;
-}
-
-int pop() {
-	int x = q[front];
-	for (int i = front; i < rear; i++) {
-		q[i] = q[i + 1];
-	}
-	rear--;
-	return x;
-}
-
-int main() {
-	freopen("input.txt", "r", stdin);
-
-	push(1);
-	push(2);
-	push(3);
-	pop();
-
-	while (!isEmpty()) {
-		cout << pop() << " ";
-	}
+int main(){
+    freopen("input.txt", "r", stdin);
+    int n, k;
+    cin >> n >> k;
+    x[0] = 0;
+    dequy(1, k, n);
 }
